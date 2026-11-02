@@ -65,3 +65,28 @@ def domanda1(dati):
       "totale_film_unici": len(film_unici),
       "film_in_tutti_i_report": len(film_sempre_presenti),
   }
+
+def domanda2(dati):
+  subset = [r for r in dati if r["report"] == "2025Jan-Jun"]
+
+  if not subset:
+    return "Nessun dato trovato per questo report."
+
+  durate = [r["runtime_minuti"] for r in subset]
+
+  minimo = min(durate)
+  massimo = max(durate)
+  media = round(sum(durate) / len(durate), 2)
+
+  film_lungo = ""
+  for r in subset:
+    if r["runtime_minuti"] == massimo:
+      film_lungo = r["title"]
+      break
+
+  return {
+      "min_minuti": minimo,
+      "max_minuti": massimo,
+      "media_minuti": media,
+      "film_piu_lungo": film_lungo,
+  }
