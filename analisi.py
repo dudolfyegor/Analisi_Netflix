@@ -90,3 +90,32 @@ def domanda2(dati):
       "media_minuti": media,
       "film_piu_lungo": film_lungo,
   }
+
+  def domanda3(dati):
+  views_per_report = {}
+  max_views_per_report = {}
+ 
+  for riga in dati:
+    rep = riga["report"]
+    v = riga["views"]
+    titolo = riga["title"]
+ 
+    views_per_report[rep] = views_per_report.get(rep, 0.0) + v
+ 
+    if (
+        rep not in max_views_per_report
+        or v > max_views_per_report[rep]["views"]
+    ):
+      max_views_per_report[rep] = {"title": titolo, "views": v}
+ 
+  subset_2025 = [r for r in dati if r["report"] == "2025Jan-Jun"]
+  subset_2025_sorted = sorted(
+      subset_2025, key=lambda x: x["views"], reverse=True
+  )
+  top_10 = subset_2025_sorted[:10]
+ 
+  return {
+      "views_per_report": views_per_report,
+      "piu_visto_per_report": max_views_per_report,
+      "top_10_2025": top_10,
+  }
