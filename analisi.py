@@ -119,3 +119,12 @@ def domanda2(dati):
       "piu_visto_per_report": max_views_per_report,
       "top_10_2025": top_10,
   }
+
+  def scrivi_risultati(dati_d3):
+  with open("risultati.csv", "w", encoding="utf-8", newline="") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Report", "Film Piu Visto", "Visualizzazioni Totali"])
+    for rep, views in dati_d3["views_per_report"].items():
+      film_top = dati_d3["piu_visto_per_report"][rep]["title"]
+      writer.writerow([rep, film_top, views])
+ 
