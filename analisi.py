@@ -128,3 +128,22 @@ def domanda2(dati):
       film_top = dati_d3["piu_visto_per_report"][rep]["title"]
       writer.writerow([rep, film_top, views])
  
+def domanda_engagement(dati):
+  film_engagement = []
+ 
+  for riga in dati:
+    views = riga["views"]
+    if views > 0:
+      ore_per_view = riga["hours_viewed"] / views
+      film_engagement.append(
+          {
+              "title": riga["title"],
+              "report": riga["report"],
+              "ore_medie_per_view": round(ore_per_view, 2),
+          }
+      )
+ 
+  film_engagement_ordinati = sorted(
+      film_engagement, key=lambda x: x["ore_medie_per_view"], reverse=True
+  )
+  return film_engagement_ordinati[:5]
