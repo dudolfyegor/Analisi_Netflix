@@ -39,3 +39,29 @@ def carica(nomefile):
       dati.append(riga)
 
   return dati, scartate
+
+def domanda1(dati):
+  righe_per_report = {}
+  film_per_report = {}
+
+  for riga in dati:
+    rep = riga["report"]
+    titolo = riga["title"]
+
+    righe_per_report[rep] = righe_per_report.get(rep, 0) + 1
+
+    if titolo not in film_per_report:
+      film_per_report[titolo] = set()
+    film_per_report[titolo].add(rep)
+
+  film_unici = set(film_per_report.keys())
+
+  film_sempre_presenti = [
+      t for t, semestri in film_per_report.items() if len(semestri) == 4
+  ]
+
+  return {
+      "righe_per_report": righe_per_report,
+      "totale_film_unici": len(film_unici),
+      "film_in_tutti_i_report": len(film_sempre_presenti),
+  }
