@@ -1,7 +1,7 @@
 # Analisi dati Netflix 2023-2025
 Questo è il nostro progetto di informatica dove abbiamo analizzato i file dei dati di Netflix (dal 2023 al 2025). L'obiettivo era pulire i dati, fare un po' di calcoli sulle visualizzazioni e sulle durate dei film, e salvare i risultati principali. Abbiamo fatto tutto lavorando in gruppo con Git e i branch per non incasinarci il codice.
 ## Chi ha fatto cosa
-Abbiamo diviso il lavoro usando i branch su Git (feature/carica-e-domande e feature/domanda3-e-risultati) e poi abbiamo unito tutto sul main con le Pull Request.
+Abbiamo diviso il lavoro usando i branch su Git (carica-e-domande1_2 e domanda3-e-risultati) e poi abbiamo unito tutto sul main con le Pull Request.
 * Lucia Enrico: si è occupato di caricare il file CSV, ignorare i dati sbagliati e fare i calcoli delle prime due domande (conteggi sui semestri e durate dei film del 2025).
 * Dolud Yegor: ha fatto la parte della domanda 3 (visualizzazioni totali e top 10), la scrittura del file CSV di output e la domanda extra sull'engagement.
 ## Come abbiamo pulito i dati
