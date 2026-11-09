@@ -7,7 +7,7 @@ Abbiamo diviso il lavoro usando i branch su Git (feature/carica-e-domande e feat
 ## Come abbiamo pulito i dati
 Prima di fare qualsiasi calcolo, la funzione carica() legge il file dati/netflix-film-2023-2025.csv e fa un po' di pulizia:
 * Legge il file in UTF-8 per non avere problemi con i caratteri speciali.
-Punto elenco Salta le righe con i valori "NA" nelle colonne della durata, delle views o delle ore viste. In totale abbiamo scartato 12 righe perche non erano valide.
+* Salta le righe con i valori "NA" nelle colonne della durata, delle views o delle ore viste. In totale abbiamo scartato 12 righe perche non erano valide.
 * Converte la durata da testo (tipo "1H 30M") in un numero intero di minuti, cosi possiamo farci le medie e i confronti facilmente.
 ## Cosa fa lo script e i risultati
 Il programma analisi.py calcola queste cose in ordine:
