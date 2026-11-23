@@ -4,7 +4,6 @@ FILE = "dati/netflix-film-2023-2025.csv"
 
 
 def converti_durata(testo_durata):
-
   if not testo_durata or testo_durata == "NA":
     return 0
 
@@ -92,15 +91,15 @@ def domanda2(dati):
   }
 
   def domanda3(dati):
-  views_per_report = {}
-  max_views_per_report = {}
+    views_per_report = {}
+    max_views_per_report = {}
  
-  for riga in dati:
-    rep = riga["report"]
-    v = riga["views"]
-    titolo = riga["title"]
+    for riga in dati:
+      rep = riga["report"]
+      v = riga["views"]
+      titolo = riga["title"]
  
-    views_per_report[rep] = views_per_report.get(rep, 0.0) + v
+      views_per_report[rep] = views_per_report.get(rep, 0.0) + v
  
     if (
         rep not in max_views_per_report
@@ -108,11 +107,11 @@ def domanda2(dati):
     ):
       max_views_per_report[rep] = {"title": titolo, "views": v}
  
-  subset_2025 = [r for r in dati if r["report"] == "2025Jan-Jun"]
-  subset_2025_sorted = sorted(
+    subset_2025 = [r for r in dati if r["report"] == "2025Jan-Jun"]
+    subset_2025_sorted = sorted(
       subset_2025, key=lambda x: x["views"], reverse=True
   )
-  top_10 = subset_2025_sorted[:10]
+    top_10 = subset_2025_sorted[:10]
  
   return {
       "views_per_report": views_per_report,
@@ -120,11 +119,11 @@ def domanda2(dati):
       "top_10_2025": top_10,
   }
 
-  def scrivi_risultati(dati_d3):
+def scrivi_risultati(dati_d3):
   with open("risultati.csv", "w", encoding="utf-8", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(["Report", "Film Piu Visto", "Visualizzazioni Totali"])
-    for rep, views in dati_d3["views_per_report"].items():
+  for rep, views in dati_d3["views_per_report"].items():
       film_top = dati_d3["piu_visto_per_report"][rep]["title"]
       writer.writerow([rep, film_top, views])
  
